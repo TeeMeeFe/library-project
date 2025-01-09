@@ -11,7 +11,7 @@ body {
 }
 
 main {
-    width: 85%;
+    width: 55%;
     margin: auto;
     background-color: #EFEFEF;
     border: 1px solid #AFAFCF;
@@ -39,4 +39,26 @@ ul {
 
 .main-body {
     height: 1200px; /* Placeholder */
+}
+
+.book-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(240px, 1fr));
+    justify-items: center;
+    gap: 16px;
+    padding: 16px;
+}
+
+.card {
+    height: 240px;
+    width: 100%;
+    background-color: #CFCFCF;
+    border: 1px solid #BABABA;
+    border-radius: 4px;
+    opacity: 25%;
+}
+
+.card:hover {
+    opacity: 90%;
 }

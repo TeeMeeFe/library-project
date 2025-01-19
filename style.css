@@ -30,6 +30,10 @@ ul {
     list-style-type: none;
 }
 
+.container {
+    flex: 1;
+}
+
 .header {
     background-color: #cfcff7;
     padding: 1em 2.5em; 
@@ -84,9 +88,11 @@ ul {
 }
 
 .footer {
+    
     flex: 1;
     background-color: #282850;
     color: #EFEFEF;
+    max-height: 15ch;
 
     display: flex;
     justify-content: space-around;

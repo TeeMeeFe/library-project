@@ -32,23 +32,26 @@
                     </button>
                     <dialog class="book-add-dialog" id="book-add">
                         <form action="" method="dialog">
-                            <p>
-                                <label for="Name">Name of the book
-                                    <input type="text" name="name" id="Name">
-                                </label>
-                                <label for="Author">Author
-                                    <input type="text" name="author" id="Author">
-                                </label>
-                            </p>
-                            <p>
-                                <label for="Year">Year of issue
-                                    <input type="number" name="year" id="Year">
-                                </label>
-                                <label for="Description">Description
-                                    <textarea name="desc" id="Description"></textarea>
-                                </label>
-                            </p>
-                            <div>
+                            <fieldset>
+                                <legend>Add information about the book</legend>
+                                <div>
+                                    <label for="Name"><span>Name of the book</span> 
+                                        <div><input type="text" name="name" id="Name"></div>
+                                    </label>
+                                    <label for="Author"><span>Author</span> 
+                                        <div><input type="text" name="author" id="Author"></div>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label for="Year"><span>Year of issue</span> 
+                                        <div><input type="number" name="year" id="Year"></div>
+                                    </label>
+                                    <label for="Description"><span>Description</span>
+                                        <div><textarea name="desc" id="Description"></textarea></div>
+                                    </label>
+                                </div>
+                            </fieldset>
+                            <div class="buttons">
                                 <button id="cancelBtn" value="cancel" formmethod="dialog">Cancel</button>
                                 <button id="confirmBtn" type="submit" value="default">Submit</button>
                             </div>

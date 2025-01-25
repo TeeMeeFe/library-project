@@ -2,7 +2,10 @@ const libraryBooks = [];
 
 // Them selectors
 const bookAdderBtn = document.querySelector(".book-adder");
-const bookAdderDialog = document.querySelector("dialog");
+const bookAdderDialog = document.querySelector(".book-add-dialog");
+
+const dialogCancelBtn = document.querySelector("#cancelBtn");
+const dialogConfirmBtn = document.querySelector("#confirmBtn");
 
 // The book constructor
 function Book(name, author, yearOfIssue, description) {
@@ -20,4 +23,8 @@ function addBook() {
 
 bookAdderBtn.addEventListener("click", () => {
     bookAdderDialog.showModal();
+});
+
+dialogCancelBtn.addEventListener("click", () => {
+    bookAdderDialog.close();
 });

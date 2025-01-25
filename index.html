@@ -30,15 +30,26 @@
                         <h1>⊕</h1>
                         Click to add book
                     </button>
-                    <dialog id="book-add dialog">
+                    <dialog class="book-add-dialog" id="book-add">
                         <form action="" method="dialog">
                             <p>
                                 <label for="Name">Name of the book
-                                    <input type="text" id="Name">
+                                    <input type="text" name="name" id="Name">
+                                </label>
+                                <label for="Author">Author
+                                    <input type="text" name="author" id="Author">
+                                </label>
+                            </p>
+                            <p>
+                                <label for="Year">Year of issue
+                                    <input type="number" name="year" id="Year">
+                                </label>
+                                <label for="Description">Description
+                                    <textarea name="desc" id="Description"></textarea>
                                 </label>
                             </p>
                             <div>
-                                <button value="cancel" formmethod="dialog">Cancel</button>
+                                <button id="cancelBtn" value="cancel" formmethod="dialog">Cancel</button>
                                 <button id="confirmBtn" type="submit" value="default">Submit</button>
                             </div>
                         </form>

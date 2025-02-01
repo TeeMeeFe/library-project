@@ -31,7 +31,7 @@
                         Click to add book
                     </button>
                     <dialog class="book-dialog" id="dialogs">
-                        <form action="" method="dialog">
+                        <form action="get" method="dialog">
                             <fieldset class="book-dialog">
                                 <legend>About the book</legend>
                                 <img class="book image" src="" alt="book image">
@@ -50,20 +50,23 @@
                             <fieldset>
                                 <legend>Add information about the book</legend>
                                 <div>
-                                    <label for="Name" aria-required="true"><span>Name of the book</span> 
+                                    <label for="Name" aria-label="required"><span>Name of the book</span> 
                                         <div><input type="text" name="name" id="Name" required></div>
                                     </label>
-                                    <label for="Author"><span>Author</span> 
-                                        <div><input type="text" name="author" id="Author"></div>
+                                    <label for="Author" aria-label="required"><span>Author</span> 
+                                        <div><input type="text" name="author" id="Author" required></div>
                                     </label>
                                 </div>
                                 <div>
-                                    <label for="Year"><span>Year of issue</span> 
-                                        <div><input type="number" name="year" id="Year"></div>
+                                    <label for="Year" aria-label="required"><span>Year of issue</span> 
+                                        <div><input type="number" name="year" id="Year" required></div>
                                     </label>
                                     <label for="Description"><span>Description</span>
                                         <div><textarea name="desc" id="Description"></textarea></div>
                                     </label>
+                                </div>
+                                <div>Upload Image
+                                    <input type="file" name="file" accept="image/*" required>
                                 </div>
                             </fieldset>
                             <div class="buttons">

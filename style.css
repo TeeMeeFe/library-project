@@ -116,9 +116,13 @@ fieldset {
     gap: 1.5em;
     align-content: center;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-between;
 
     padding: 8px;
+}
+
+fieldset > div:nth-child(3) {
+    margin-right: 15%;
 }
 
 label div {

@@ -22,20 +22,33 @@
             <div class="main-body">
                 <div class="book-container">
                     <!-- Placeholder template card --> 
-                    <button type="button" class="book card" id="book-dialog">
-                        <img src="" alt="book">
+                    <button type="button" class="book card" id="book-btn">
+                        <img class="book image-thumb" src="" alt="book">
                         <p>yadda yadda book</p>
                     </button>
-                    <button type="button" class="book-adder card" id="book-adder-dialog">
+                    <button type="button" class="book book-adder card" id="book-btn">
                         <h1>⊕</h1>
                         Click to add book
                     </button>
-                    <dialog class="book-add-dialog" id="book-add">
+                    <dialog class="book-dialog" id="dialogs">
+                        <form action="" method="dialog">
+                            <fieldset>
+                                <legend>About the book</legend>
+                                <img class="book image" src="" alt="book image">
+                                <p>Name: <span class="book name"></span></p>
+                                <p>Author: <span class="book author"></span></p>
+                                <p>Year of Issue: <span class="book year"></span></p>
+                                <p>Description: <div class="book Description"></div></p>
+                            </fieldset>
+                        </form>
+                        <button id="cancelBtn" value="cancel" formmethod="dialog">Close</button>
+                    </dialog>
+                    <dialog class="book-add-dialog" id="dialogs">
                         <form action="" method="dialog">
                             <fieldset>
                                 <legend>Add information about the book</legend>
                                 <div>
-                                    <label for="Name"><span>Name of the book</span> 
+                                    <label for="Name" aria-required="true"><span>Name of the book</span> 
                                         <div><input type="text" name="name" id="Name" required></div>
                                     </label>
                                     <label for="Author"><span>Author</span> 

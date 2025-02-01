@@ -30,6 +30,18 @@ ul {
     list-style-type: none;
 }
 
+dialog {
+    margin: 0;
+    padding: 4rem;
+    border-radius: 16px;
+
+    transform: translateX(-50%);
+    left: 50%;
+    top: 10%;
+
+    width: fit-content;
+}
+
 .container {
     flex: 1;
 }
@@ -97,18 +109,6 @@ ul {
     justify-content: space-around;
     flex-flow: wrap row-reverse;
     align-content: center;
-}
-
-.book-add-dialog {
-    margin: 0;
-    padding: 4rem;
-    border-radius: 16px;
-
-    transform: translateX(-50%);
-    left: 50%;
-    top: 10%;
-
-    width: fit-content;
 }
 
 fieldset {

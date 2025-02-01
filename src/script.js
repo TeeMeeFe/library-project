@@ -8,7 +8,7 @@ const dialogCancelBtn = document.querySelectorAll("#cancelBtn");
 const dialogConfirmBtn = document.querySelector("#confirmBtn");
 
 // Them books button selectors
-const bookBtns = Array.from(document.querySelectorAll("button#book-btn"));
+const bookBtns = document.querySelectorAll("button#book-btn");
 
 // The book constructor
 function Book(name, author, yearOfIssue, description) {

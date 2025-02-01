@@ -1,9 +1,9 @@
-const libraryBooks = [];
+const libraryBooks = []; // Basic placeholder array to store the books we're adding from the frontend as i'm not handling databases just yet
 
 // Them selectors
 const bookDialogs = document.querySelectorAll("#dialogs");
 
-// Dialog selectors
+// Them dialog selectors
 const dialogCancelBtn = document.querySelectorAll("#cancelBtn");
 const dialogConfirmBtn = document.querySelector("#confirmBtn");
 

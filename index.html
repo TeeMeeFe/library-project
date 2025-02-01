@@ -31,7 +31,7 @@
                         Click to add book
                     </button>
                     <dialog class="book-dialog" id="dialogs">
-                        <form action="get" method="dialog">
+                        <form action="" method="dialog">
                             <fieldset class="book-dialog">
                                 <legend>About the book</legend>
                                 <img class="book image" src="" alt="book image">
@@ -51,15 +51,15 @@
                                 <legend>Add information about the book</legend>
                                 <div>
                                     <label for="Name" aria-label="required"><span>Name of the book</span> 
-                                        <div><input type="text" name="name" id="Name" required></div>
+                                        <div><input type="text" name="name" id="Name" placeholder="e.g: The lord of the rings" required></div>
                                     </label>
                                     <label for="Author" aria-label="required"><span>Author</span> 
-                                        <div><input type="text" name="author" id="Author" required></div>
+                                        <div><input type="text" name="author" id="Author" placeholder="e.g: J. R. R. Tolkien" required></div>
                                     </label>
                                 </div>
                                 <div>
                                     <label for="Year" aria-label="required"><span>Year of issue</span> 
-                                        <div><input type="number" name="year" id="Year" required></div>
+                                        <div><input type="number" name="year" id="Year" placeholder="e.g: 1954" required></div>
                                     </label>
                                     <label for="Description"><span>Description</span>
                                         <div><textarea name="desc" id="Description"></textarea></div>

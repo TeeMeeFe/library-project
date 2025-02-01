@@ -21,6 +21,7 @@ function addBook() {
 
 };
 
+// Them event listeners
 bookAdderBtn.addEventListener("click", () => {
     bookAdderDialog.showModal();
 });

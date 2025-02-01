@@ -22,10 +22,10 @@
             <div class="main-body">
                 <div class="book-container">
                     <!-- Placeholder template card --> 
-                    <a class="book card" data-atribute="book" href="">
+                    <button type="button" class="book card" id="book-dialog">
                         <img src="" alt="book">
                         <p>yadda yadda book</p>
-                    </a>
+                    </button>
                     <button type="button" class="book-adder card" id="book-adder-dialog">
                         <h1>⊕</h1>
                         Click to add book
@@ -36,7 +36,7 @@
                                 <legend>Add information about the book</legend>
                                 <div>
                                     <label for="Name"><span>Name of the book</span> 
-                                        <div><input type="text" name="name" id="Name"></div>
+                                        <div><input type="text" name="name" id="Name" required></div>
                                     </label>
                                     <label for="Author"><span>Author</span> 
                                         <div><input type="text" name="author" id="Author"></div>

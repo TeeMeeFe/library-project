@@ -146,3 +146,19 @@ textarea#Description {
     background-color: #0F0F0F;
     opacity: 50%;
 }
+
+fieldset.book-dialog {
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+}
+
+fieldset.book-dialog > img {
+    max-height: 240px;
+}
+
+p.book.Description {
+    display: inline;
+    padding-left: calc(10ch + .5ch);
+    text-indent: calc(-10ch - .5ch);
+}

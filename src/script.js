@@ -1,11 +1,14 @@
 const libraryBooks = [];
 
 // Them selectors
-const bookAdderBtn = document.querySelector(".book-adder");
-const bookAdderDialog = document.querySelector(".book-add-dialog");
+const bookDialogs = document.querySelectorAll("#dialogs");
 
-const dialogCancelBtn = document.querySelector("#cancelBtn");
+// Dialog selectors
+const dialogCancelBtn = document.querySelectorAll("#cancelBtn");
 const dialogConfirmBtn = document.querySelector("#confirmBtn");
+
+// Them books button selectors
+const bookBtns = Array.from(document.querySelectorAll("button#book-btn"));
 
 // The book constructor
 function Book(name, author, yearOfIssue, description) {
@@ -22,10 +25,16 @@ function addBook() {
 };
 
 // Them event listeners
-bookAdderBtn.addEventListener("click", () => {
-    bookAdderDialog.showModal();
-});
+bookBtns.forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+        bookDialogs[i].showModal();
+    })
+})
 
-dialogCancelBtn.addEventListener("click", () => {
-    bookAdderDialog.close();
-});
+dialogCancelBtn.forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+        bookDialogs[i].close();
+    });
+})
+
+

@@ -26,14 +26,24 @@ function addBook() {
     
 };
 
+// A function to key our objects by their names 
+function groupByName(arr) {
+    return arr.reduce((obj, value) => {
+        obj[value.name] = value
+        return obj
+    }, {});
+};
+
 // Them event listeners
 bookBtns.forEach((btn, i) => {
+    // Open the dialog when the corresponding button gets clicked
     btn.addEventListener("click", () => {
         bookDialogs[i].showModal();
     })
 });
 
 dialogCancelBtn.forEach((btn, i) => {
+    // Close the dialog when the corresponding button gets clicked
     btn.addEventListener("click", () => {
         bookDialogs[i].close();
     });
@@ -49,11 +59,22 @@ bookForm.addEventListener("submit", event => {
 bookForm.addEventListener("formdata", event => {
     console.log("FormData fired");
 
-    // Get the form data and log it
+    // Get the form data from the event
     const data = event.formData;
+    const arr = [];
+
+    // Push our form datae to an array
     data.forEach((value, key) => {
-        console.log({key, value});
+        arr.push([key, value]);
     });
+
+    let obj = [Object.fromEntries(arr),];
+
+    // Send the object back to our libraryBooks array
+    const bookArr = groupByName(obj);
+    libraryBooks.push(bookArr);
+
+    console.log(bookArr);
 
     // Close the dialog 
     const dialog = document.querySelector(".book-add-dialog");

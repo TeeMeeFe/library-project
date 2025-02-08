@@ -2,7 +2,9 @@ const libraryBooks = []; // Basic placeholder array to store the books we're add
 
 // Them selectors
 const books = document.querySelectorAll("button.book");
+const bookContainer = document.querySelector("div.book-container");
 const bookDialogs = document.querySelectorAll("#dialogs");
+const bookAdderDialog = document.querySelector("dialog.book-add-dialog");
 const bookForm = document.querySelector("#book-info"); // The form to add books
 
 // Them dialog selectors
@@ -11,19 +13,22 @@ const dialogConfirmBtn = document.querySelector("#confirmBtn");
 
 // Them books button selectors
 const bookBtns = document.querySelectorAll("button#book-btn");
+const bookAdderBtn = document.querySelector("button#book-adder-btn");
 
 // The book constructor
 function Book(name, author, yearOfIssue, description) {
     this.name = name;
     this.author = author;
-    this.yearOfIssue = year;
-    this.description = desc;
+    this.yearOfIssue = yearOfIssue;
+    this.description = description;
 
-    return {name, author, year, desc};
+    return {name, author, yearOfIssue, description};
 };
 
-function addBook() {
-    
+// A function to add books full stack wise
+function addBook(arr) {
+    const data = arr;
+
 };
 
 // A function to key our objects by their names 
@@ -41,6 +46,10 @@ bookBtns.forEach((btn, i) => {
         bookDialogs[i].showModal();
     })
 });
+
+bookAdderBtn.addEventListener("click", () => {
+    bookAdderDialog.showModal();
+})
 
 dialogCancelBtn.forEach((btn, i) => {
     // Close the dialog when the corresponding button gets clicked
@@ -63,20 +72,18 @@ bookForm.addEventListener("formdata", event => {
     const data = event.formData;
     const arr = [];
 
-    // Push our form datae to an array
+    // Push our form datae to an array. 
     data.forEach((value, key) => {
         arr.push([key, value]);
     });
 
+    // Convert our array into an object 
     let obj = [Object.fromEntries(arr),];
+    obj = obj[0]; 
+    const book = new Book(obj.name, obj.author, obj.yearOfIssue, obj.description);
 
-    // Send the object back to our libraryBooks array
-    const bookArr = groupByName(obj);
-    libraryBooks.push(bookArr);
-
-    console.log(bookArr);
+    console.log(book);
 
     // Close the dialog 
-    const dialog = document.querySelector(".book-add-dialog");
-    dialog.close();  
+    bookAdderDialog.close();  
 });

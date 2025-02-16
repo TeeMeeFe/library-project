@@ -72,14 +72,6 @@ function addBook(arr) {
     return book;
 };
     
-// A function to key our objects by their names 
-function groupByName(arr) {
-    return arr.reduce((obj, value) => {
-        obj[value.name] = value
-        return obj
-    }, {});
-};
-
 // Them event listeners
 bookAdderBtn.addEventListener("click", () => {
     bookAdderDialog.showModal(); // To open our book adder dialog box

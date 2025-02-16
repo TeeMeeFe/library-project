@@ -34,8 +34,7 @@ function addBook(arr) {
     const year = arr.yearOfIssue;
     const desc = arr.description;
 
-    libraryBooks.push(new Book(name, author, year, desc));
-    console.log(libraryBooks);
+    const book = libraryBooks.push(new Book(name, author, year, desc));
 
     // Them elements
     const dialog = document.querySelector(".book-dialog");
@@ -63,11 +62,14 @@ function addBook(arr) {
     button.appendChild(paraAuthor);
     bookContainer.appendChild(button);
 
+    // Add event listeners to our buttons
     button.addEventListener("click", () => {
         dialog.showModal();
     })
 
-    //console.log(dialog);
+    console.log(`Successfully added book: ${name}`);
+
+    return book;
 };
     
 // A function to key our objects by their names 
@@ -80,7 +82,7 @@ function groupByName(arr) {
 
 // Them event listeners
 bookAdderBtn.addEventListener("click", () => {
-    bookAdderDialog.showModal();
+    bookAdderDialog.showModal(); // To open our book adder dialog box
 })
 
 dialogCancelBtn.forEach((btn, i) => {

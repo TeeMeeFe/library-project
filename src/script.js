@@ -21,8 +21,6 @@ function Book(name, author, yearOfIssue, description) {
     this.author = author;
     this.yearOfIssue = yearOfIssue;
     this.description = description;
-
-    return {name, author, yearOfIssue, description};
 };
 
 // A function to add books to the front-end
@@ -79,8 +77,9 @@ bookAdderBtn.addEventListener("click", () => {
 
 dialogCancelBtn.forEach((btn, i) => {
     // Close the dialog when the corresponding button gets clicked
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", event => {
         bookDialogs[i].close();
+        event.preventDefault(); // Stop from accidentally creating a new book when we hit cancel or exit
     });
 });
 

@@ -1,8 +1,8 @@
 const libraryBooks = []; // Basic placeholder array to store the books we're adding from the frontend as i'm not handling databases just yet
 
 // Them selectors
-const books = document.querySelectorAll("button.book");
 const bookContainer = document.querySelector("div.book-container");
+const bookDialog = document.querySelector(".book-dialog");
 const bookDialogs = document.querySelectorAll("#dialogs");
 const bookAdderDialog = document.querySelector("dialog.book-add-dialog");
 const bookForm = document.querySelector("#book-info"); // The form to add books
@@ -11,8 +11,7 @@ const bookForm = document.querySelector("#book-info"); // The form to add books
 const dialogCancelBtn = document.querySelectorAll("#cancelBtn");
 const dialogConfirmBtn = document.querySelector("#confirmBtn");
 
-// Them books button selectors
-const bookBtns = document.querySelectorAll("button#book-btn.book.card");
+// The book adder button
 const bookAdderBtn = document.querySelector("button#book-adder-btn");
 
 // The book constructor
@@ -25,7 +24,6 @@ function Book(name, author, yearOfIssue, description) {
 
 // A function to add books to the front-end
 function addBook(arr) {
-
     // The data
     const name = arr.name;
     const author = arr.author;
@@ -35,8 +33,6 @@ function addBook(arr) {
     const book = libraryBooks.push(new Book(name, author, year, desc));
 
     // Them elements
-    const dialog = document.querySelector(".book-dialog");
-
     const button = document.createElement("button");
     const image = document.createElement("img");
     const paraName = document.createElement("p");
@@ -44,6 +40,7 @@ function addBook(arr) {
 
     // Them attributes
     button.setAttribute("class", "book card");
+    button.setAttribute("index", book);
     button.type = "button";
     button.id = "book-btn";
         
@@ -60,14 +57,30 @@ function addBook(arr) {
     button.appendChild(paraAuthor);
     bookContainer.appendChild(button);
 
-    // Add event listeners to our buttons
+     // Add event listeners to our buttons
     button.addEventListener("click", () => {
-        dialog.showModal();
-    })
+        bookDialog.showModal();
+        openCheck(libraryBooks[book - 1]); // What the fuck
+    });
 
     console.log(`Successfully added book: ${name}`);
 
     return book;
+};
+
+// A function to fetch info about the book and show that in the corresponding dialog box
+function openCheck(book) {
+    const dialog = bookDialog;
+
+    const name = dialog.querySelector("p.book.name > span");
+    const author = dialog.querySelector("p.book.author > span");
+    const year = dialog.querySelector("p.book.year > span");
+    const desc = dialog.querySelector("p.book.description > span");
+
+    name.textContent = dialog.open ? book.name : "";
+    author.textContent = dialog.open ? book.author : "";
+    year.textContent = dialog.open ? book.yearOfIssue : "";
+    desc.textContent = dialog.open ? book.description : "";
 };
     
 // Them event listeners

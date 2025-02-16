@@ -34,8 +34,7 @@ function addBook(arr) {
     const year = arr.yearOfIssue;
     const desc = arr.description;
 
-    const book = new Book(name, author, year, desc);
-    libraryBooks.push(book);
+    libraryBooks.push(new Book(name, author, year, desc));
     console.log(libraryBooks);
 
     // Them elements
@@ -80,13 +79,6 @@ function groupByName(arr) {
 };
 
 // Them event listeners
-/*bookBtns.forEach((btn, i) => {
-    // Open the dialog when the corresponding button gets clicked
-    btn.addEventListener("click", () => {
-        bookDialogs[i].showModal();
-    })
-});*/
-
 bookAdderBtn.addEventListener("click", () => {
     bookAdderDialog.showModal();
 })

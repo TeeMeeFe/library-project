@@ -12,7 +12,7 @@ const dialogCancelBtn = document.querySelectorAll("#cancelBtn");
 const dialogConfirmBtn = document.querySelector("#confirmBtn");
 
 // Them books button selectors
-const bookBtns = document.querySelectorAll("button#book-btn");
+const bookBtns = document.querySelectorAll("button#book-btn.book.card");
 const bookAdderBtn = document.querySelector("button#book-adder-btn");
 
 // The book constructor
@@ -25,48 +25,50 @@ function Book(name, author, yearOfIssue, description) {
     return {name, author, yearOfIssue, description};
 };
 
-// A function to add books full stack wise
+// A function to add books to the front-end
 function addBook(arr) {
 
     // The data
-    const data = arr;
-
-    const name = data.name;
-    const author = data.author;
-    const year = data.yearOfIssue;
-    const desc = data.description;
+    const name = arr.name;
+    const author = arr.author;
+    const year = arr.yearOfIssue;
+    const desc = arr.description;
 
     const book = new Book(name, author, year, desc);
-    console.log(book);
+    libraryBooks.push(book);
+    console.log(libraryBooks);
 
     // Them elements
-    const container = document.querySelector(".book-container");
+    const dialog = document.querySelector(".book-dialog");
 
     const button = document.createElement("button");
     const image = document.createElement("img");
-    const para = document.createElement("p");
+    const paraName = document.createElement("p");
+    const paraAuthor = document.createElement("p");
 
     // Them attributes
-    button.setAttribute("type", "button");
     button.setAttribute("class", "book card");
-    button.setAttribute("id", "book-btn");
+    button.type = "button";
+    button.id = "book-btn";
         
     image.setAttribute("class", "book image-thumb");
-    image.setAttribute("src", "");
-    image.setAttribute("alt", "book");
+    image.src = "";
+    image.alt = "book";
 
-    para.textContent = name;
+    paraName.textContent = name;
+    paraAuthor.textContent = author;
 
-    // The dialog and their selectors
-    const dialog = document.querySelector(".book-dialog");
-
+    // Append the elements to our container
     button.appendChild(image);
-    button.appendChild(para);
-    container.appendChild(button);
+    button.appendChild(paraName);
+    button.appendChild(paraAuthor);
+    bookContainer.appendChild(button);
+
+    button.addEventListener("click", () => {
+        dialog.showModal();
+    })
 
     //console.log(dialog);
-
-
 };
     
 // A function to key our objects by their names 
@@ -78,12 +80,12 @@ function groupByName(arr) {
 };
 
 // Them event listeners
-bookBtns.forEach((btn, i) => {
+/*bookBtns.forEach((btn, i) => {
     // Open the dialog when the corresponding button gets clicked
     btn.addEventListener("click", () => {
         bookDialogs[i].showModal();
     })
-});
+});*/
 
 bookAdderBtn.addEventListener("click", () => {
     bookAdderDialog.showModal();
@@ -119,7 +121,7 @@ bookForm.addEventListener("formdata", event => {
     let obj = [Object.fromEntries(arr),];
     obj = obj[0]; 
 
-    addBook(obj);
+    addBook(obj); // adds our books to the screen
 
     // Close the dialog 
     bookAdderDialog.close();  

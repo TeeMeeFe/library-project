@@ -46,7 +46,7 @@ function addBook(arr) {
         
     image.setAttribute("class", "book image-thumb");
     image.src = "";
-    image.alt = "book";
+    image.alt = name;
 
     paraName.textContent = name;
     paraAuthor.textContent = author;

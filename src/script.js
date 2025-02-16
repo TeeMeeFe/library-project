@@ -27,10 +27,48 @@ function Book(name, author, yearOfIssue, description) {
 
 // A function to add books full stack wise
 function addBook(arr) {
+
+    // The data
     const data = arr;
 
-};
+    const name = data.name;
+    const author = data.author;
+    const year = data.yearOfIssue;
+    const desc = data.description;
 
+    const book = new Book(name, author, year, desc);
+    console.log(book);
+
+    // Them elements
+    const container = document.querySelector(".book-container");
+
+    const button = document.createElement("button");
+    const image = document.createElement("img");
+    const para = document.createElement("p");
+
+    // Them attributes
+    button.setAttribute("type", "button");
+    button.setAttribute("class", "book card");
+    button.setAttribute("id", "book-btn");
+        
+    image.setAttribute("class", "book image-thumb");
+    image.setAttribute("src", "");
+    image.setAttribute("alt", "book");
+
+    para.textContent = name;
+
+    // The dialog and their selectors
+    const dialog = document.querySelector(".book-dialog");
+
+    button.appendChild(image);
+    button.appendChild(para);
+    container.appendChild(button);
+
+    //console.log(dialog);
+
+
+};
+    
 // A function to key our objects by their names 
 function groupByName(arr) {
     return arr.reduce((obj, value) => {
@@ -80,9 +118,8 @@ bookForm.addEventListener("formdata", event => {
     // Convert our array into an object 
     let obj = [Object.fromEntries(arr),];
     obj = obj[0]; 
-    const book = new Book(obj.name, obj.author, obj.yearOfIssue, obj.description);
 
-    console.log(book);
+    addBook(obj);
 
     // Close the dialog 
     bookAdderDialog.close();  

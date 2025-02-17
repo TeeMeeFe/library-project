@@ -34,6 +34,9 @@ function addBook(arr) {
 
     // Them elements
     const button = document.createElement("button");
+
+    const div = document.createElement("div");
+    const remover = document.createElement("button");
     const image = document.createElement("img");
     const paraName = document.createElement("p");
     const paraAuthor = document.createElement("p");
@@ -43,6 +46,9 @@ function addBook(arr) {
     button.setAttribute("index", book);
     button.type = "button";
     button.id = "book-btn";
+
+    remover.setAttribute("class", "card-remover remover");
+    remover.id = "book-btn-remover";
         
     image.setAttribute("class", "book image-thumb");
     image.src = "";
@@ -50,11 +56,14 @@ function addBook(arr) {
 
     paraName.textContent = name;
     paraAuthor.textContent = author;
+    remover.textContent = "X";
 
     // Append the elements to our container
-    button.appendChild(image);
-    button.appendChild(paraName);
-    button.appendChild(paraAuthor);
+    button.appendChild(remover);
+    button.appendChild(div);
+    div.appendChild(image);
+    div.appendChild(paraName);
+    div.appendChild(paraAuthor);
     bookContainer.appendChild(button);
 
      // Add event listeners to our buttons

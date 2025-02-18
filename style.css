@@ -183,6 +183,7 @@ p.book.Description {
 
 .card-remover {
     /*visibility: hidden;*/
+    margin: 4px;
     font-size: 24px;
     align-self: flex-end;
     z-index: -1;
@@ -191,3 +192,13 @@ p.book.Description {
 /*.card-remover:hover { 
     visibility: visible;
 }*/
+
+#book-remove-fieldset {
+    display: flex;
+    flex-direction: column;
+}
+
+#book-remove-fieldset > div {
+    display: flex;
+    justify-content: space-around;
+}

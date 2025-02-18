@@ -66,12 +66,14 @@ function addBook(arr) {
     div.appendChild(paraAuthor);
     bookContainer.appendChild(button);
 
-     // Add event listeners to our buttons
+    // Add event listeners to our buttons
     button.addEventListener("click", () => {
-        bookDialog.showModal();
+        bookDialog.showModal(); 
         openCheck(libraryBooks[book - 1]); // What the fuck
     });
 
+    remover.addEventListener("click", handleRemove);
+    
     console.log(`Successfully added book: ${name}`);
 
     return book;
@@ -90,6 +92,10 @@ function openCheck(book) {
     author.textContent = dialog.open ? book.author : "";
     year.textContent = dialog.open ? book.yearOfIssue : "";
     desc.textContent = dialog.open ? book.description : "";
+};
+
+function handleRemove(e) {
+    
 };
     
 // Them event listeners

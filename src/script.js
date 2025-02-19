@@ -5,6 +5,7 @@ const bookContainer = document.querySelector("div.book-container");
 const bookDialog = document.querySelector(".book-dialog");
 const bookDialogs = document.querySelectorAll("#dialogs");
 const bookAdderDialog = document.querySelector("dialog.book-add-dialog");
+const bookRemoverDialog = document.querySelector("dialog.book-remover-dialog");
 const bookForm = document.querySelector("#book-info"); // The form to add books
 
 // Them dialog selectors
@@ -34,9 +35,10 @@ function addBook(arr) {
 
     // Them elements
     const button = document.createElement("button");
+    const remover = document.createElement("button");
+    const buttons = [button, remover];
 
     const div = document.createElement("div");
-    const remover = document.createElement("button");
     const image = document.createElement("img");
     const paraName = document.createElement("p");
     const paraAuthor = document.createElement("p");
@@ -68,11 +70,11 @@ function addBook(arr) {
 
     // Add event listeners to our buttons
     button.addEventListener("click", () => {
-        bookDialog.showModal(); 
-        openCheck(libraryBooks[book - 1]); // What the fuck
+        showBook(libraryBooks[book - 1]);
+    }); 
+    remover.addEventListener("click", () => {
+        showRemoverModal(libraryBooks[book - 1]);
     });
-
-    remover.addEventListener("click", handleRemove);
     
     console.log(`Successfully added book: ${name}`);
 
@@ -80,7 +82,9 @@ function addBook(arr) {
 };
 
 // A function to fetch info about the book and show that in the corresponding dialog box
-function openCheck(book) {
+function showBook(book) {
+    bookDialog.showModal(); 
+    
     const dialog = bookDialog;
 
     const name = dialog.querySelector("p.book.name > span");
@@ -94,10 +98,32 @@ function openCheck(book) {
     desc.textContent = dialog.open ? book.description : "";
 };
 
-function handleRemove(e) {
-    
+// A function to show the modal to remove our books
+function showRemoverModal(book) {
+    bookRemoverDialog.showModal();
+
+    const btn = bookRemoverDialog.querySelector("#confirmBtn");
+    const name = bookRemoverDialog.querySelector("p.book.name > span");
+
+    name.textContent = bookRemoverDialog.open ? `"${book.name}"?` : "";
+
+    btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        handleRemover(book);
+    });
 };
-    
+   
+function handleRemover(e) {
+    const book = document.querySelector("button.book");
+
+    book.querySelector(".card-remover");
+    // Remove the listener, to avoid memory leaks
+    book.removeEventListener("click", handleRemover);
+    book.parentElement.removeChild(book);
+
+    bookRemoverDialog.close();
+};
+
 // Them event listeners
 bookAdderBtn.addEventListener("click", () => {
     bookAdderDialog.showModal(); // To open our book adder dialog box

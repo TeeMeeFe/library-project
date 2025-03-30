@@ -36,7 +36,7 @@ function addBook(arr) {
     // Them elements
     const button = document.createElement("button");
     const remover = document.createElement("button");
-    const buttons = [button, remover];
+    //const buttons = [button, remover];
 
     const div = document.createElement("div");
     const image = document.createElement("img");
@@ -60,6 +60,14 @@ function addBook(arr) {
     paraAuthor.textContent = author;
     remover.textContent = "X";
 
+    // Add event listeners to our buttons
+    button.addEventListener("click", () => {
+        showBook(libraryBooks[book - 1]);
+    }); 
+    remover.addEventListener("click", () => {
+        showRemoverModal(libraryBooks[book - 1]);
+    });
+        
     // Append the elements to our container
     button.appendChild(remover);
     button.appendChild(div);
@@ -68,14 +76,6 @@ function addBook(arr) {
     div.appendChild(paraAuthor);
     bookContainer.appendChild(button);
 
-    // Add event listeners to our buttons
-    button.addEventListener("click", () => {
-        showBook(libraryBooks[book - 1]);
-    }); 
-    remover.addEventListener("click", () => {
-        showRemoverModal(libraryBooks[book - 1]);
-    });
-    
     console.log(`Successfully added book: ${name}`);
 
     return book;
@@ -110,18 +110,30 @@ function showRemoverModal(book) {
     btn.addEventListener("click", (e) => {
         e.preventDefault();
         handleRemover(book);
+        return ;
     });
 };
    
-function handleRemover(e) {
+function handleRemover(b) {
     const book = document.querySelector("button.book");
-
     book.querySelector(".card-remover");
+
     // Remove the listener, to avoid memory leaks
     book.removeEventListener("click", handleRemover);
     book.parentElement.removeChild(book);
 
+    const removed = (function (arr, value) {
+        let index = libraryBooks.indexOf(value); 
+        if (index >= -1) {
+            arr.splice(index, 1);
+        }
+        return arr;
+    })(libraryBooks, b)
+
     bookRemoverDialog.close();
+    console.log(`Succesfully removed book: ${b.name}`);
+
+    return ;
 };
 
 // Them event listeners

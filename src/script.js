@@ -21,6 +21,7 @@ function Book(name, author, yearOfIssue, description) {
     this.author = author;
     this.yearOfIssue = yearOfIssue;
     this.description = description;
+    this.uuid = crypto.randomUUID();
 };
 
 // A function to add books to the front-end
@@ -45,7 +46,7 @@ function addBook(arr) {
 
     // Them attributes
     button.setAttribute("class", "book card");
-    button.setAttribute("index", book);
+    button.setAttribute("index", book - 1);
     button.type = "button";
     button.id = "book-btn";
 
@@ -61,12 +62,14 @@ function addBook(arr) {
     remover.textContent = "X";
 
     // Add event listeners to our buttons
-    button.addEventListener("click", () => {
-        showBook(libraryBooks[book - 1]);
+    button.addEventListener("click", (event) => {
+        if(event.target == button) {
+            showBook(libraryBooks[book - 1]);
+        }
+        else if(event.target == remover) {
+            showRemoverModal(libraryBooks[book - 1]);
+        }
     }); 
-    remover.addEventListener("click", () => {
-        showRemoverModal(libraryBooks[book - 1]);
-    });
         
     // Append the elements to our container
     button.appendChild(remover);
@@ -114,26 +117,29 @@ function showRemoverModal(book) {
     });
 };
    
-function handleRemover(b) {
-    const book = document.querySelector("button.book");
-    book.querySelector(".card-remover");
+function handleRemover(book) {
+    let b = document.querySelector("button.book");
+    b.querySelector(".card-remover");
 
-    // Remove the listener, to avoid memory leaks
-    book.removeEventListener("click", handleRemover);
-    book.parentElement.removeChild(book);
-
-    const removed = (function (arr, value) {
-        let index = libraryBooks.indexOf(value); 
-        if (index >= -1) {
+    // Remove the book from the library
+    (function(arr, value) {
+        const index = arr.indexOf(value);
+        if (index > -1) {
             arr.splice(index, 1);
+            return arr;
         }
-        return arr;
-    })(libraryBooks, b)
-
+        return ;
+    })(libraryBooks, book);
+    
+    // Remove the listener, to avoid memory leaks
+    b.removeEventListener("click", handleRemover);
+    b.parentElement.removeChild(b); // Remove the element and their children from the DOM 
     bookRemoverDialog.close();
-    console.log(`Succesfully removed book: ${b.name}`);
 
-    return ;
+    console.log(`Succesfully removed book: ${book.name}`);
+
+    b = null;
+    return book;
 };
 
 // Them event listeners

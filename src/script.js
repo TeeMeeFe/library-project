@@ -37,7 +37,6 @@ function addBook(arr) {
     // Them elements
     const button = document.createElement("button");
     const remover = document.createElement("button");
-    //const buttons = [button, remover];
 
     const div = document.createElement("div");
     const image = document.createElement("img");
